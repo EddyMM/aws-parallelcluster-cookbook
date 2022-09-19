@@ -1,0 +1,18 @@
+maintainer 'Eric G. Wolfe'
+maintainer_email 'eric.wolfe@gmail.com'
+license 'Apache-2.0'
+description 'Installs and configures NFS, and NFS exports'
+name 'nfs'
+version '4.0.0'
+source_url 'https://github.com/atomic-penguin/cookbook-nfs'
+issues_url 'https://github.com/atomic-penguin/cookbook-nfs/issues'
+chef_version '>= 15.3'
+
+supports 'ubuntu', '>= 18.04'
+supports 'debian', '>= 10.0'
+supports 'centos', '>= 7.0'
+supports 'redhat', '>= 7.0'
+supports 'scientific', '>= 7.0'
+supports 'oracle', '>= 7.0'
+
+depends 'line', '~> 4.0.1'
