@@ -37,7 +37,7 @@ def generate_fleet_config_file(output_file, input_file):
                 "CapacityType": "on-demand|spot",
                 "AllocationStrategy": "lowest-price"
                 "Instances": [
-                    { "InstanceType": ... }
+                    { "InstanceType": ..., "SubnetId": ... }
                 ],
                 "MaxPrice": ...
             }
