@@ -407,11 +407,14 @@ def _run_server(port, certificate=None, key=None):
     :param certificate: the certificate to use if HTTPSs
     :param key: the private key to use if HTTPSs
     """
-    server_address = ("localhost", port)
+    server_hostname = "localhost"
+    server_address = (server_hostname, port)
     httpd = ThreadedHTTPServer(server_address, DCVAuthenticator)
 
-    ssl_context = ssl.create_default_context(purpose=ssl.Purpose.SERVER_AUTH)
+    ssl_context = ssl.SSLContext()
     ssl_context.minimum_version = ssl.TLSVersion.TLSv1_2
+    ssl_context.server_hostname = server_hostname
+
     if certificate:
         ssl_context.load_cert_chain(certfile=certificate, keyfile=key)
         httpd.socket = ssl_context.wrap_socket(httpd.socket, server_side=True)
