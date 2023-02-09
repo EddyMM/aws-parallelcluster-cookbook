@@ -39,6 +39,7 @@ action :mount do
     # Attach EBS volume
     execute "attach_volume_#{index}" do
       command "#{node.default['cluster']['cookbook_virtualenv_path']}/bin/python /usr/local/sbin/manageVolume.py --volume-id #{volumeid} --attach"
+      live_stream true
       creates dev_path[index]
     end
 
@@ -166,6 +167,7 @@ action :unmount do
     # Detach EBS volume
     execute "detach_volume_#{index}" do
       command "#{node.default['cluster']['cookbook_virtualenv_path']}/bin/python /usr/local/sbin/manageVolume.py --volume-id #{volumeid} --detach"
+      live_stream true
     end
 
     # Delete the shared directories

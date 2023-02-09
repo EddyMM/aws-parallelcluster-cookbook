@@ -36,6 +36,7 @@ action :mount do
     # Attach RAID EBS volume
     execute "attach_raid_volume_#{index}" do
       command "#{node['cluster']['cookbook_virtualenv_path']}/bin/python /usr/local/sbin/manageVolume.py --volume-id #{volumeid} --attach"
+      live_stream true
       creates raid_dev_path[index]
     end
 
@@ -177,6 +178,7 @@ action :unmount do
     # Detach RAID EBS volume
     execute "detach_raid_volume_#{index}" do
       command "#{node['cluster']['cookbook_virtualenv_path']}/bin/python /usr/local/sbin/manageVolume.py --volume-id #{volumeid} --detach"
+      live_stream true
     end
   end
 end
